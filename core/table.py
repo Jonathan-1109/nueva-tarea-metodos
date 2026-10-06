@@ -234,26 +234,3 @@ def plan_tables(model):
                 "Costo semana", "Acumulado"], cost_rows)
     return t1, t2
 
-
-def validate(model, expected):
-    rows = []
-    ok = True
-    for i, exp in enumerate(expected["semanas"]):
-        p = model.plan[i]
-        got = {"contratados": p.hired, "despedidos": p.fired,
-               "costo": p.total_cost}
-        state = "OK" if got == exp else "ERROR"
-        ok = ok and (got == exp)
-        want = "contratar %d, despedir %d, costo $%d" % (
-            exp["contratados"], exp["despedidos"], exp["costo"])
-        have = "contratar %d, despedir %d, costo $%d" % (
-            p.hired, p.fired, p.total_cost)
-        rows.append([p.week, want, have, state])
-    total_ok = model.total_cost == expected["total"]
-    ok = ok and total_ok
-    rows.append(["TOTAL", "costo $%d" % expected["total"],
-                 "costo $%d" % model.total_cost,
-                 "OK" if total_ok else "ERROR"])
-    return ok, Table(["Semana", "Respuesta esperada", "Respuesta obtenida",
-                      "Estado"], rows)
-

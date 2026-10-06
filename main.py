@@ -5,17 +5,6 @@ ARCHIVO_SALIDA = "salida.txt"
 def main():
     demandas = [5, 7, 8, 4, 6]
 
-    esperado = {
-        "total": 3300,
-        "semanas": [
-            {"contratados": 5, "despedidos": 0, "costo": 1400},
-            {"contratados": 3, "despedidos": 0, "costo": 1300},
-            {"contratados": 0, "despedidos": 0, "costo": 0},
-            {"contratados": 0, "despedidos": 2, "costo": 600},
-            {"contratados": 0, "despedidos": 0, "costo": 0},
-        ],
-    }
-
     modelo = WorkforceSizingModel(
         demands=demandas,
         carry_rate=300,          
@@ -25,7 +14,7 @@ def main():
     )
     modelo.solve()
 
-    reporte = build_report(modelo, esperado)
+    reporte = build_report(modelo)
     reporte.show()
     reporte.save(ARCHIVO_SALIDA)
 

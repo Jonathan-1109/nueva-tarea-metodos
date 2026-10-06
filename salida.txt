@@ -251,18 +251,3 @@ Costos semanales:
 +--------+--------------------+-----------------+--------------+-----------+
 
 >>> COSTO TOTAL DE MANO DE OBRA = $3300 <<<
-
-7) VALIDACIÓN CONTRA LA RESPUESTA ESPERADA
-------------------------------------------
-+--------+--------------------------------------+--------------------------------------+--------+
-| Semana | Respuesta esperada                   | Respuesta obtenida                   | Estado |
-+--------+--------------------------------------+--------------------------------------+--------+
-| 1      | contratar 5, despedir 0, costo $1400 | contratar 5, despedir 0, costo $1400 | OK     |
-| 2      | contratar 3, despedir 0, costo $1300 | contratar 3, despedir 0, costo $1300 | OK     |
-| 3      | contratar 0, despedir 0, costo $0    | contratar 0, despedir 0, costo $0    | OK     |
-| 4      | contratar 0, despedir 2, costo $600  | contratar 0, despedir 2, costo $600  | OK     |
-| 5      | contratar 0, despedir 0, costo $0    | contratar 0, despedir 0, costo $0    | OK     |
-| TOTAL  | costo $3300                          | costo $3300                          | OK     |
-+--------+--------------------------------------+--------------------------------------+--------+
-
-VALIDACIÓN EXITOSA: la solución coincide con la respuesta esperada.

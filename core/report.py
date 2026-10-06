@@ -36,7 +36,7 @@ class Report:
 
 
 
-def build_report(model, expected=None):
+def build_report(model):
     r = Report()
     r.heading("MODELO DE TAMAÑO DE LA FUERZA DE TRABAJO  -  PROGRAMACIÓN DINÁMICA")
     r.line("Programa main.py | POO | sin librerías externas")
@@ -107,18 +107,5 @@ def build_report(model, expected=None):
     r.table(t2)
     r.line()
     r.line(">>> COSTO TOTAL DE MANO DE OBRA = $%d <<<" % model.total_cost)
-
-    # ------------------------ 7) Validación -----------------------------
-    if expected is not None:
-        r.subheading("7) VALIDACIÓN CONTRA LA RESPUESTA ESPERADA")
-        ok, table = validate(model, expected)
-        r.table(table)
-        r.line()
-        if ok:
-            r.line("VALIDACIÓN EXITOSA: la solución coincide con la respuesta"
-                   " esperada.")
-        else:
-            r.line("VALIDACIÓN FALLIDA: la solución NO coincide con la respuesta"
-                   " esperada.")
 
     return r
