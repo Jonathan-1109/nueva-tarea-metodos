@@ -1,7 +1,6 @@
 ==============================================================================
       MODELO DE TAMAÑO DE LA FUERZA DE TRABAJO  -  PROGRAMACIÓN DINÁMICA      
 ==============================================================================
-Programa main.py | POO | sin librerías externas
 
 
 1) DATOS DEL PROBLEMA
@@ -208,7 +207,6 @@ Celdas con (-): estado inalcanzable o no factible (w < b_i).
 | Semana 4  | - | - | - | - | 8 | 8 | 8 | 8 | 8 |
 | Semana 5  | - | - | - | - | - | - | 6 | 7 | 4 |
 +-----------+---+---+---+---+---+---+---+---+---+
-Permite saber de qué estado anterior proviene el mínimo f_i(w).
 
 5) RECONSTRUCCIÓN DE LA RUTA ÓPTIMA (backtracking)
 --------------------------------------------------

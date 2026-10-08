@@ -39,10 +39,8 @@ class Report:
 def build_report(model):
     r = Report()
     r.heading("MODELO DE TAMAÑO DE LA FUERZA DE TRABAJO  -  PROGRAMACIÓN DINÁMICA")
-    r.line("Programa main.py | POO | sin librerías externas")
     r.line()
 
-    # ---------------------------- 1) Datos ------------------------------
     r.subheading("1) DATOS DEL PROBLEMA")
     rows = [[i + 1, b] for i, b in enumerate(model.demands)]
     r.table(Table(["Semana", "Demanda b_i (trabajadores)"], rows))
@@ -59,7 +57,6 @@ def build_report(model):
            % model.max_workforce)
     r.line("Restricción ....................: w >= b_i en cada semana")
 
-    # --------------------- 2) Construcción paso a paso ------------------
     r.subheading("2) CONSTRUCCIÓN PASO A PASO DE LA TABLA DE PROGRAMACIÓN DINÁMICA")
     r.line("Recurrencia:  f_i(w) = min_w' { f_{i-1}(w') + costo_contratación(w',w)"
            " + costo_excedente(i,w) }")
@@ -79,17 +76,13 @@ def build_report(model):
         r.line("Resumen de la etapa (mínimo por cada estado w):")
         r.table(stage_table(model, week))
 
-    # ------------------------- 3) Tabla DP final ------------------------
     r.subheading("3) TABLA DP RESUMEN  f_i(w)  (costo mínimo acumulado)")
     r.table(dp_summary_table(model))
     r.line("Celdas con (-): estado inalcanzable o no factible (w < b_i).")
 
-    # ---------------------- 4) Tabla de decisiones ----------------------
     r.subheading("4) TABLA DE DECISIONES (mejor fuerza anterior w')")
     r.table(decision_summary_table(model))
-    r.line("Permite saber de qué estado anterior proviene el mínimo f_i(w).")
 
-    # ------------------ 5) Reconstrucción de la ruta óptima -------------
     r.subheading("5) RECONSTRUCCIÓN DE LA RUTA ÓPTIMA (backtracking)")
     r.line("Mejor fuerza final: w = %d  con costo mínimo f_%d(w) = $%d"
            % (model.final_workforce, model.n_weeks, model.total_cost))
@@ -98,7 +91,6 @@ def build_report(model):
     r.line("Ruta óptima: " + " -> ".join(
         "w_%d=%d" % (i, levels[i]) for i in range(len(levels))))
 
-    # ------------------------ 6) Plan óptimo ----------------------------
     r.subheading("6) PLAN ÓPTIMO SEMANA A SEMANA")
     t1, t2 = plan_tables(model)
     r.line("Decisiones de fuerza de trabajo:")
